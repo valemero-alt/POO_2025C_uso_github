@@ -1,0 +1,133 @@
+class Motor:
+    def __init__(self, tipo, potencia):
+        self._tipo = tipo
+        self._potencia = potencia
+
+    @property
+    def tipo(self):
+        return self._tipo
+
+    @tipo.setter
+    def tipo(self, valor):
+        self._tipo = valor
+
+    @property
+    def potencia(self):
+        return self._potencia
+
+    @potencia.setter
+    def potencia(self, valor):
+        self._potencia = valor
+
+    def encender_motor(self):
+        return f"El motor {self._tipo} ha sido encendido."
+
+    def detener_motor(self):
+        return f"El motor {self._tipo} ha sido apagado."
+
+    def __str__(self):
+        return f"Motor(tipo={self._tipo}, potencia={self._potencia})"
+
+
+class Vehiculo:
+    def __init__(self, marca, modelo, anio, motor):
+        self._marca = marca
+        self._modelo = modelo
+        self._anio = anio
+        self._motor = motor
+
+    @property
+    def marca(self):
+        return self._marca
+
+    @marca.setter
+    def marca(self, valor):
+        self._marca = valor
+
+    @property
+    def modelo(self):
+        return self._modelo
+
+    @modelo.setter
+    def modelo(self, valor):
+        self._modelo = valor
+
+    @property
+    def anio(self):
+        return self._anio
+
+    @anio.setter
+    def anio(self, valor):
+        self._anio = valor
+
+    @property
+    def motor(self):
+        return self._motor
+
+    @motor.setter
+    def motor(self, valor):
+        self._motor = valor
+
+    def encender(self):
+        return f"El vehículo {self._marca} {self._modelo} está encendido."
+
+    def apagar(self):
+        return f"El vehículo {self._marca} {self._modelo} está apagado."
+
+    def __str__(self):
+        return f"Vehículo(marca={self._marca}, modelo={self._modelo}, año={self._anio}, motor={self._motor})"
+
+
+class Automovil(Vehiculo):
+    def __init__(self, marca, modelo, anio, motor, puertas):
+        super().__init__(marca, modelo, anio, motor)
+        self.puertas = puertas
+
+    def abrir_maletero(self):
+        return "El maletero ha sido abierto."
+
+    def tocar_claxon(self):
+        return "¡Beep beep!"
+
+    def __str__(self):
+        return super().__str__() + f", puertas={self.puertas}"
+
+
+class Motocicleta(Vehiculo):
+    def __init__(self, marca, modelo, anio, motor, cilindraje):
+        super().__init__(marca, modelo, anio, motor)
+        self.cilindraje = cilindraje
+
+    def hacer_caballito(self):
+        return "La motocicleta está haciendo un caballito."
+
+    def usar_patada_arranque(self):
+        return "La motocicleta ha arrancado con patada."
+
+    def __str__(self):
+        return super().__str__() + f", cilindraje={self.cilindraje}"
+
+
+# Clase Principal
+if __name__ == "__main__":
+    motor1 = Motor("Gasolina", "150HP")
+    motor2 = Motor("Diésel", "180HP")
+    motor3 = Motor("Gasolina", "90HP")
+    motor4 = Motor("Eléctrico", "70HP")
+
+    auto1 = Automovil("Toyota", "Corolla", 2020, motor1, 4)
+    auto2 = Automovil("Honda", "Civic", 2022, motor2, 4)
+
+    moto1 = Motocicleta("Yamaha", "R3", 2019, motor3, 321)
+    moto2 = Motocicleta("Zero", "FX", 2023, motor4, 0)
+
+    print(auto1)
+    print(auto2)
+    print(moto1)
+    print(moto2)
+
+    print(auto1.encender())
+    print(auto1.abrir_maletero())
+    print(moto1.hacer_caballito())
+    print(moto2.usar_patada_arranque())
+
